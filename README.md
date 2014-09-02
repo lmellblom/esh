@@ -1,4 +1,4 @@
 esh
 ===
 
-East Sweden Hack - Team Mätt!
+East Sweden Hack - Team mätt!
