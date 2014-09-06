@@ -13,12 +13,12 @@
 <body ng-app="Matt">
 	<div class="jumbotron">
 		<!-- insert a image instead -->
-		<img src="images/matt_logo_white_resize.svg" alt="mätt!">
+		<img src="images/matt_logo_white_resize.svg" alt="mätt!" />
 	</div>
 
 	<div class="container">
 
-
+		<!-- Insert sökruta -->
 
 		<div ng-controller="restaurantListController as restController">
 
@@ -26,14 +26,25 @@
 			<div ng-repeat="restaurant in restaurants">
 				<span ng-if="$index % 2 == 0">
 			    	<div class="row list-group">
+
+			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
 			        	<div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
-			             	{{restaurants[$index+0].NAMN}}<br />
-			              	{{restaurants[$index+0].BESADR}}
-			              </div>
-			              <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
-			              	{{restaurants[$index+1].NAMN}}<br />
-			              	{{restaurants[$index+0].BESADR}}
-			              </div>
+			             	<h4 class="colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              	</span>
+			            </div>
+			            
+			            <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h4 class="colorRed">{{restaurants[$index+1].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              	</span>
+			            </div>
 			        </div>
 			    </span>
 			</div>
