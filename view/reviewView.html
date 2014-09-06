@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF8"/>
+    <meta charset="UTF8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src= "../script/angular.js"></script>
+    <script type="text/javascript" src= "../script/angular.js"></script>
+    <script type="text/javascript" src= "../script/angular-route.js"> 
+    </script>
     <script src= "../controller/reviewController.js"></script>
   </head>
   <body ng-app = "Rating">
 		<div ng-controller = "reviewController as rating">
-			<form novalidate class="simple-form">
-			  Happy? 
-				<div id = "attributes">
-					<span ng-repeat="i in [1, 2, 3, 4, 5]">
-						<input type="radio" ng-model="rating.average" value="{{i}}" />{{i}}
-					</span>
-				</div>
-				
-			  <br/>
-			  <button ng-click="createRating(rating)">save!</button>  
+
+			<form novalidate class="simple-form" ng-submit="send">
+				<div ng-view></div>
+			  <a href = "attributes">OK</a>
 			</form>
-		  <pre>form = {{rating | json}}</pre>
+		  <pre> form = {{rating | json}}</pre>
 		</div>
 	</body>
 </html>
