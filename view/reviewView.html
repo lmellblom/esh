@@ -4,16 +4,15 @@
     <meta charset="UTF8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src= "../script/angular.js"></script>
-    <script type="text/javascript" src= "../script/angular-route.js"> 
-    </script>
+    <script type="text/javascript" src= "../script/angular-route.js"> </script>
     <script src= "../controller/reviewController.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/review.css"/>
   </head>
   <body ng-app = "Rating">
 		<div ng-controller = "reviewController as rating">
-
 			<form novalidate class="simple-form" ng-submit="send">
 				<div ng-view></div>
-			  <a href = "attributes">OK</a>
 			</form>
 		  <pre> form = {{rating | json}}</pre>
 		</div>

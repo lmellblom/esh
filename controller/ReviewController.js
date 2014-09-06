@@ -16,15 +16,22 @@ angular.module('Rating', ['ngRoute'])
      $scope.params = $routeParams;
  })
 
+ .controller('CommentController', function($scope, $routeParams) {
+     $scope.name = "CommentController";
+     $scope.params = $routeParams;
+ })
 	.config(function($routeProvider, $locationProvider) {
 	  $routeProvider
 	  .when('/view/reviewView.html', {
-	    templateUrl: 'ratingView.html',
+	    templateUrl: 'averageModule.html',
 	    controller: 'RatingController'
 	  })
-
+	  .when('/view/comment', {
+	    templateUrl: 'commentModule.html',
+	    controller: 'CommentController'
+	  })
 	   .when('/view/attributes', {
-	    templateUrl: 'attributesView.html',
+	    templateUrl: 'attributesModule.html',
 	    controller: 'AttributesController'
 	  });
 	  // configure html5 to get links working on jsfiddle
