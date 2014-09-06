@@ -185,7 +185,7 @@ angular.module('Matt', [])
   	} else if($scope.restaurants[index].controllStatus == 1) {
   		return "images/list/kontroll_gron_listvy.svg";
   	} else if ($scope.restaurants[index].controllStatus == 2) {
-  			return "images/kontroll_rod_listvy.svg";
+  			return "images/list/kontroll_rod_listvy.svg";
   	} else {
   		return "images/list/smiley_glad_listvy.svg";
   	}
