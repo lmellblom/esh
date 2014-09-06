@@ -7,6 +7,7 @@
 	<title>mätt</title>
 	<meta name="description" content="">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body ng-app="Matt">
@@ -24,11 +25,11 @@
 			<div ng-repeat="restaurant in restaurants">
 				<span ng-if="$index % 2 == 0">
 			    	<div class="row">
-			        	<div class="col-md-8" ng-if="restaurants[$index+0]">
+			        	<div class="col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
 			             	{{restaurants[$index+0].NAMN}}<br />
 			              	{{restaurants[$index+0].BESADR}}
 			              </div>
-			              <div class="col-md-4" ng-if="restaurants[$index+1]">
+			              <div class="col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
 			              	{{restaurants[$index+1].NAMN}}<br />
 			              	{{restaurants[$index+0].BESADR}}
 			              </div>
