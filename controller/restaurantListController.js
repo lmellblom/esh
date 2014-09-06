@@ -33,6 +33,14 @@ angular.module('Matt', [])
           "VERKSAM_WEBKLASS": "BUTIKHANDEL",
           "BESADR": "Sjukhusvägen 6",
           "KONTROLL": "Kontroll utförd"
+        },
+        {
+         "OBJID": "392",
+          "NAMN": "A Ljungstedt Rest & livs prog",
+          "VERKSAM": "Restaurang",
+          "VERKSAM_WEBKLASS": "RESTAURANG",
+          "BESADR": "Anders Ljungstedts Gata 1",
+          "KONTROLL": "Kontroll utförd" 
         }
     ]
 

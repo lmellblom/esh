@@ -12,7 +12,8 @@
 
 <body ng-app="Matt">
 	<div class="jumbotron">
-		<h1>mätt!</h1>
+		<!-- insert a image instead -->
+		<img src="images/matt_logo_white_resize.svg" alt="mätt!">
 	</div>
 
 	<div class="container">
@@ -24,12 +25,12 @@
 			<!-- align the restuarant in rows with two cells -->
 			<div ng-repeat="restaurant in restaurants">
 				<span ng-if="$index % 2 == 0">
-			    	<div class="row">
-			        	<div class="col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			    	<div class="row list-group">
+			        	<div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
 			             	{{restaurants[$index+0].NAMN}}<br />
 			              	{{restaurants[$index+0].BESADR}}
 			              </div>
-			              <div class="col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
 			              	{{restaurants[$index+1].NAMN}}<br />
 			              	{{restaurants[$index+0].BESADR}}
 			              </div>

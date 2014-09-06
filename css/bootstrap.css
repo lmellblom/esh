@@ -4401,11 +4401,14 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+
+/* EDIT: changes the backround color to our! */
 .jumbotron {
+  text-align: center;
   padding: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #E16562; 
 }
 .jumbotron h1,
 .jumbotron .h1 {
