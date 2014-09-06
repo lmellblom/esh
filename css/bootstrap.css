@@ -5,6 +5,15 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
+/* added to the css to the list view */
+.colorRed {
+  color: #E16562;
+}
+.adress {
+  font-weight: bold;
+}
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -4401,11 +4410,14 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+
+/* EDIT: changes the backround color to our! */
 .jumbotron {
+  text-align: center;
   padding: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #E16562; 
 }
 .jumbotron h1,
 .jumbotron .h1 {

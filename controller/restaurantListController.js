@@ -174,4 +174,3 @@ angular.module('Matt', [])
 	};*/
 
 });
-

@@ -2,15 +2,55 @@
 <html lang="en">
 <head>
 	<script src="script/angular.js"></script>
-	<script src="script/script.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+	<script src="controller/restaurantListController.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<title>mätt</title>
 	<meta name="description" content="">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
-	<h1>We are on!</h1>
+<body ng-app="Matt">
+	<div class="jumbotron">
+		<!-- insert a image instead -->
+		<img src="images/matt_logo_white_resize.svg" alt="mätt!" />
+	</div>
+
+	<div class="container">
+
+		<!-- Insert sökruta -->
+
+		<div ng-controller="restaurantListController as restController">
+
+			<!-- align the restuarant in rows with two cells -->
+			<div ng-repeat="restaurant in restaurants">
+				<span ng-if="$index % 2 == 0">
+			    	<div class="row list-group">
+
+			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
+			        	<div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			             	<h4 class="colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              	</span>
+			            </div>
+			            
+			            <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h4 class="colorRed">{{restaurants[$index+1].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              	</span>
+			            </div>
+			        </div>
+			    </span>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>
