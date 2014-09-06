@@ -85,14 +85,17 @@ angular.module('Matt', [])
       "VERKSAM": "Livsmedelsbutik ej hantering",
       "VERKSAM_WEBKLASS": "BUTIKHANDEL",
       "BESADR": "Munkhagsgatan 104",
-      "KONTROLL": "Kontroll utförd"
+      "KONTROLL": "Kontroll utförd",
+      "avgRating": "3"
     },
     {
       "OBJID": "16844", //Saknas kontroll!
       "NAMN": "43:ans Kvarterskrog",
       "VERKSAM": "Restaurang",
       "VERKSAM_WEBKLASS": "RESTAURANG",
-      "BESADR": "Nya Tanneforsvägen 43a"
+      "BESADR": "Nya Tanneforsvägen 43a",
+      "avgRating": "1",
+      "controllStatus": "3"
     },
     {
       "OBJID": "24264",
@@ -100,7 +103,8 @@ angular.module('Matt', [])
       "VERKSAM": "Pizzeria",
       "VERKSAM_WEBKLASS": "RESTAURANG",
       "BESADR": "Rydsvägen 68d",
-      "KONTROLL": "Kontroll utförd"
+      "KONTROLL": "Kontroll utförd",
+      "avgRating": "1"
     },
     {
       "OBJID": "503",
@@ -108,7 +112,8 @@ angular.module('Matt', [])
       "VERKSAM": "Livsmedelsbutik med hantering",
       "VERKSAM_WEBKLASS": "BUTIKHANDEL",
       "BESADR": "Sjukhusvägen 6",
-      "KONTROLL": "Kontroll utförd"
+      "KONTROLL": "Kontroll utförd",
+      "controllStatus": "1"
     },
     {
 	    "OBJID": "23571",
@@ -116,7 +121,8 @@ angular.module('Matt', [])
 	    "VERKSAM": "Café",
 	    "VERKSAM_WEBKLASS": "RESTAURANG",
 	    "BESADR": "Nygatan 22",
-	    "KONTROLL": "Kontroll utförd"
+	    "KONTROLL": "Kontroll utförd",
+	    "controllStatus": "2"
   	}
   ]
 
@@ -139,6 +145,31 @@ angular.module('Matt', [])
   				$scope.controllStatus = 3; //unknown
   			}
   		}
+  	}
+  	console.log("onclick ");
+  };
+
+  this.setEmotion = function setEmotion(index) { //TODO: set all images
+
+  	if($scope.restaurants[index].avgRating == null) {
+			return "images/kontroll_gron_listvy.svg"; //TODO: change to unknown
+  	} else if($scope.restaurants[index].avgRating <2) {
+  		return "images/smiley_glad_listvy.svg";
+  	} else {
+  		return "images/smiley_asglad_listvy.svg";
+  	}
+  };
+
+  this.setControllColor = function setControllColor(index) { //TODO: set all images
+
+  	if($scope.restaurants[index].controllStatus == null) {
+  		return "images/smiley_glad_listvy.svg";
+  	} else if($scope.restaurants[index].controllStatus == 1) {
+  		return "images/kontroll_gron_listvy.svg";
+  	} else if ($scope.restaurants[index].controllStatus == 2) {
+  			return "images/kontroll_rod_listvy.svg";
+  	} else {
+  		return "images/smiley_glad_listvy.svg";
   	}
   };
 

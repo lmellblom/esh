@@ -32,8 +32,8 @@
 			             	<h4 class="colorRed">{{restaurants[$index+0].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
-			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
-			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
 			              	</span>
 			            </div>
 			            
@@ -41,13 +41,14 @@
 			              	<h4 class="colorRed">{{restaurants[$index+1].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
-			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
-			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
 			              	</span>
 			            </div>
 			        </div>
 			    </span>
 			</div>
+		<button class="btn" ng-click="restController.displayRestaurant()">Set</button>
 		</div>
 	</div>
 
