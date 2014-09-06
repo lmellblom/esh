@@ -6,10 +6,20 @@
     <script type="text/javascript" src= "../script/angular.js"></script>
     <script type="text/javascript" src= "../script/angular-route.js"> </script>
     <script src= "../controller/reviewController.js"></script>
+    <script> 
+      function swapImage(id){
+        console.log(id);
+        for (var j = 1; j <= 4; j++){
+          document.getElementById("rating_"+j).src = "../images/review/smiley" + j + ".svg";
+        }
+        document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + 1 + ".svg";
+      }
+</script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/review.css"/>
+    <title>mätt</title>
   </head>
-  <body ng-app = "Rating">
+  <body ng-app = "Rating" class = "rating">
 		<div ng-controller = "reviewController as rating">
 			<form novalidate class="simple-form" ng-submit="send">
 				<div ng-view></div>
