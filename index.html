@@ -10,15 +10,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body ng-app="Matt">
+<body ng-app="Matt" class="backgroundRed">
 	<div class="jumbotron">
 		<!-- insert a image instead -->
 		<img src="images/matt_logo_white_resize.svg" alt="mätt!" />
+
+		<!-- search form -->
+		<form class="navbar-form navbar-left" role="search">
+		    <div class="form-group">
+		        <input type="text" class="form-control" placeholder="Search">
+		    </div>
+		</form>
 	</div>
 
 	<div class="container">
 
-		<!-- Insert sökruta -->
 
 		<div ng-controller="restaurantListController as restController">
 

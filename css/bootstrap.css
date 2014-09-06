@@ -10,6 +10,11 @@
 .colorRed {
   color: #E16562;
 }
+
+.backgroundRed {
+  background-color: #E16562;
+}
+
 .adress {
   font-weight: bold;
 }
@@ -283,7 +288,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px; /* EDIT: changed from 14; */
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
