@@ -3,22 +3,40 @@
 <head>
 	<script src="script/angular.js"></script>
 	<script src="controller/restaurantListController.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<title>mätt</title>
 	<meta name="description" content="">
 	<meta charset="utf-8">
 </head>
 
 <body ng-app="Matt">
-	<h1>We are on!</h1>
+	<div class="jumbotron">
+		<h1>mätt!</h1>
+	</div>
 
-<div ng-controller="restaurantListController as rest">
+	<div class="container">
 
-<ul>
-  <li ng-repeat="restaurant in restaurants">
-		{{restaurant.NAMN}}
-  </li>
-</ul>
-</div>
+
+
+		<div ng-controller="restaurantListController as restController">
+
+			<!-- align the restuarant in rows with two cells -->
+			<div ng-repeat="restaurant in restaurants">
+				<span ng-if="$index % 2 == 0">
+			    	<div class="row">
+			        	<div class="col-md-8" ng-if="restaurants[$index+0]">
+			             	{{restaurants[$index+0].NAMN}}<br />
+			              	{{restaurants[$index+0].BESADR}}
+			              </div>
+			              <div class="col-md-4" ng-if="restaurants[$index+1]">
+			              	{{restaurants[$index+1].NAMN}}<br />
+			              	{{restaurants[$index+0].BESADR}}
+			              </div>
+			        </div>
+			    </span>
+			</div>
+		</div>
+	</div>
 
 </body>
 
