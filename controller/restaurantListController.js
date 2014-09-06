@@ -196,8 +196,11 @@ angular.module('Matt', [])
   this.click = function click(id) {
 
 		$scope.sometext = "I hate this text";
-		console.log("in onClick");
-		this.displayRestaurant(id);
+		/*this.displayRestaurant(id);
+    objid = $scope.restaurants[id].OBJID;
+    console.log($scope.restaurants[id].NAMN);
+    console.log("objid:" + objid); */
+    console.log("id som skickades in: " + id);
   };
 
   /*

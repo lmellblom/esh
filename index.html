@@ -10,15 +10,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body ng-app="Matt">
+<body ng-app="Matt" class="backgroundRed">
 	<div class="jumbotron">
 		<!-- insert a image instead -->
 		<img src="images/matt_logo_white_resize.svg" alt="mätt!" />
+
+		<!-- search form -->
+		<form class="navbar-form navbar-left" role="search">
+		    <div class="form-group">
+		        <input type="text" class="form-control" placeholder="Search">
+		    </div>
+		</form>
 	</div>
 
 	<div class="container">
 
-		<!-- Insert sökruta -->
 
 		<div ng-controller="restaurantListController as restController">
 
@@ -28,8 +34,8 @@
 			    	<div class="row list-group">
 
 			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
-			        	<div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
-			             	<h4 class="colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			        	<div ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
 			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
@@ -37,8 +43,8 @@
 			              	</span>
 			            </div>
 			            
-			            <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
-			              	<h4 class="colorRed">{{restaurants[$index+1].NAMN}}</h5>
+			            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
 			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
