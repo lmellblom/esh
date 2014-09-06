@@ -2,15 +2,62 @@
 <html lang="en">
 <head>
 	<script src="script/angular.js"></script>
-	<script src="script/script.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+	<script src="controller/restaurantListController.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<title>mätt</title>
 	<meta name="description" content="">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
-	<h1>We are on!</h1>
+<body ng-app="Matt" class="backgroundRed">
+	<div class="jumbotron">
+		<!-- insert a image instead -->
+		<img src="images/matt_logo_white_resize.svg" alt="mätt!" />
+
+		<!-- search form -->
+		<form class="navbar-form navbar-left" role="search">
+		    <div class="form-group">
+		        <input type="text" class="form-control" placeholder="Search">
+		    </div>
+		</form>
+	</div>
+
+	<div class="container">
+
+
+		<div ng-controller="restaurantListController as restController">
+
+			<!-- align the restuarant in rows with two cells -->
+			<div ng-repeat="restaurant in restaurants">
+				<span ng-if="$index % 2 == 0">
+			    	<div class="row list-group">
+
+			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
+			        	<div ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+			              	</span>
+			            </div>
+			            
+			            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+			              	</span>
+			            </div>
+			        </div>
+			    </span>
+			</div>
+		<button class="btn" ng-click="restController.displayRestaurant()">Set</button>
+		</div>
+	</div>
+
 </body>
 
 </html>
