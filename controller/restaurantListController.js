@@ -95,7 +95,21 @@ angular.module('Matt', [])
       "VERKSAM_WEBKLASS": "RESTAURANG",
       "BESADR": "Nya Tanneforsvägen 43a",
       "avgRating": "1",
-      "controllStatus": "3"
+      "controllStatus": "3",
+      "listReviews": {
+      	"Review": {
+      		"reviewId": "12",
+      		"userName": "Olivia",
+      		"restaurantId": "16844",
+      		"rating": "4",
+      		"givenAttributes": {
+      			"babyFriendly": "false",
+      			"romantic": "true",
+      			"celebration": "true",
+      			"comment": "Det är min absoluta favoritrestaurang!"
+      		}
+      	}
+      }
     },
     {
       "OBJID": "24264",
@@ -133,8 +147,11 @@ angular.module('Matt', [])
   			$scope.id = $scope.restaurants[i].OBJID;
   			$scope.name = $scope.restaurants[i].NAMN;
   			$scope.address = $scope.restaurants[i].BESADR;
+  			$scope.reviews = $scope.restaurants[i].ListReviews;
 			}
 		}
+
+		//TODO: put this in initialisation 
 		for(var i=0; i<$scope.inspections.length; i++) {
   		if($scope.inspections[i].OBJID == id) {
   			if($scope.inspections[i].BESLUT == "Ingen_extrakontroll krävs") {
@@ -146,7 +163,8 @@ angular.module('Matt', [])
   			}
   		}
   	}
-  	console.log("onclick ");
+
+
   };
 
   this.setEmotion = function setEmotion(index) { //TODO: set all images
@@ -172,7 +190,6 @@ angular.module('Matt', [])
   		return "images/smiley_glad_listvy.svg";
   	}
   };
-
 
   /* function: onClick()
   On clicking on a specific restaurant, show restaurant detail view */
