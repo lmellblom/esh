@@ -34,8 +34,8 @@
 			    	<div class="row list-group">
 
 			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
-			        	<div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
-			             	<h4 class="colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			        	<div ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
 			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
@@ -43,8 +43,8 @@
 			              	</span>
 			            </div>
 			            
-			            <div class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
-			              	<h4 class="colorRed">{{restaurants[$index+1].NAMN}}</h5>
+			            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
 			              		<img src="images/smiley_glad_resize.svg" alt="glad" />
