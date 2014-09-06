@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
 	<script src="script/angular.js"></script>
-	<script src="script/script.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+	<script src="controller/restaurantListController.js"></script>
 	<title>mätt</title>
 	<meta name="description" content="">
 	<meta charset="utf-8">
 </head>
 
-<body>
+<body ng-app="Matt">
 	<h1>We are on!</h1>
+
+<div ng-controller="restaurantListController as rest">
+
+<ul>
+  <li ng-repeat="restaurant in restaurants">
+		{{restaurant.NAMN}}
+  </li>
+</ul>
+</div>
+
 </body>
 
 </html>
