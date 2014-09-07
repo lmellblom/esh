@@ -8,7 +8,7 @@ angular.module('Rating', [])
 	  $scope.rating;
 	  $scope.given_attributes = [false, false, false, false, false, false];
 	  $scope.comment;
-	  $scope.attributes = ['festligt', 'barnvänligt', 'prisvärt', 'romantiskt', 'stora sällskap', 'spontana besök'];
+	  $scope.attributes = ['festligheter', 'barn', 'liten budget', 'romantik', 'stora sällskap', 'snabba besök'];
 
 	  this.saveRating = function saveRating() {
 		  $scope.showRating = false;

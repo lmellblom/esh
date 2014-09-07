@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src= "../script/angular.js"></script>
     <script src= "../controller/restaurantListController.js"></script>
-    <script src= "../controller/reviewController.js"></script>
+    <script src= "../controller/ReviewController.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/review.css"/>
     <title>Mätt</title>
@@ -17,6 +17,7 @@
 		<!-- insert a image instead -->
 		<img src="../images/logo/matt_logo_white_resize.svg" alt="mätt!" />
 		<span class="pull-right center-block"><img width="25px" src="../images/list/about.svg" alt="Om oss" /></span>
+    
 
 		<!-- search form -->
 		<form class="colorRed navbar-form navbar-left" role="search">
@@ -27,9 +28,10 @@
 	</div>
 
 	<div ng-show="showName" class="jumbotron">
+
 		<!-- insert a image instead -->
 		<span class="pull-right center-block"><img width="25px" src="../images/list/about.svg" alt="Om oss" /></span>
-		<a ng-click="restController.back()" class="pull-left center-block"><</a>
+    <span class="pull-left center-block"><a ng-click="restController.back()" class = "btn back" ng-style="{'background-image':'url(\'../images/icons/back.svg\')'}"></a></span>
 		<h4 class="hideText">{{name}}</h4>
 	</div>
 
@@ -41,25 +43,24 @@
 				<div ng-repeat="restaurant in restaurants">
 					<span ng-if="$index % 2 == 0">
 				    	<div class="row list-group">
-
 				    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
-				        	<a ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
-				             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
-				              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
-				              	<span class="pull-right">
-				              		<img ng-src="{{restController.setEmotion($index)}}" alt="recension" />
-				              		<img ng-src="{{restController.setControllColor($index)}}" alt="kontroll" />
-				              	</span>
-				            </a>
-				            
-				            <a ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
-				              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
-				              	<p class="adress">{{restaurants[$index+1].BESADR}}</p>
-				              	<span class="pull-right">
-				              		<img ng-src="{{restController.setEmotion($index+1)}}" alt="recension" />
-				              		<img ng-src="{{restController.setControllColor($index+1)}}" alt="kontroll" />
-				              	</span>
-				            </a>
+			        	<a ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="recension" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="kontroll" />
+			              	</span>
+			            </a>
+			           
+			            <a ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
+			              	<p class="adress">{{restaurants[$index+1].BESADR}}</p>
+			              	<span class="pull-right">
+			              		<img ng-src="{{restController.setEmotion($index+1)}}" alt="recension" />
+			              		<img ng-src="{{restController.setControllColor($index+1)}}" alt="kontroll" />
+			              	</span>
+			            </a>
 				        </div>
 				    </span>
 				</div>
@@ -102,9 +103,6 @@
 		</div>
 	</div>
 		
-		<div ng-controller = "reviewController as ratingController">
-			<div ng-include src="'reviewView.html'"></div>
-		</div>
 
 		</div>
 
