@@ -792,7 +792,7 @@ pre code {
 .details { /*EDIT: detail view*/
   margin-right: -15px;
   margin-left: -15px;
-  margin-top:20px; 
+  margin-top:0px; 
   margin-bottom:100px;
   padding: 10px;
   background-color: #ffffff;
