@@ -3,8 +3,17 @@ label > input{ /* HIDE RADIO */
 }
 label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
-  border:2px solid transparent;
 }
 label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+  /*background: #FFD5CB;
+  border-radius:100%;*/
+}
+
+.btn-rating{
+	height: 25px;
+	background-color: white;
+	margin: 1px 0px 1px 0px;
+	min-width: 7.5%;
+	border-radius: 0px;
+	text-align: left;
 }

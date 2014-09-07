@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="script/angular.js"></script>
+  <script src="controller/restaurantListController.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <title>mätt</title>
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+
+
+  function getOneRestaurant(objid) {
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+    else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+    var url = "http://opendata.linkoping.se/ws_opendata/main.asmx/Livsmedelsobjekt?CustomKey=73857b55138a41aebd1958a1e9f1ebc1&objid=" + objid;
+
+    xmlhttp.open("GET", url ,false);
+    xmlhttp.send();
+
+    var allInspections = []; // innehåller bara beslut
+    var OBJID,NAMN,BESADR, KONTROLL ,BESLUT;
+
+    var x = xmlhttp.responseXML;
+
+    var inspektioner = x.getElementsByTagName("Inspektion");
+    if (inspektioner.length>0) {
+    //for (var i = 0; i < inspektioner.length; i++) {
+      BESLUT = inspektioner[inspektioner.length-1].getElementsByTagName("BESLUT")[0].firstChild.nodeValue;
+      //allInspections.push(BESLUT);
+    //}
+    }
+    else {
+      BESLUT = "ingen kontroll gjord"
+    }
+
+    OBJID = x.getElementsByTagName("OBJID")[0].firstChild.nodeValue;
+    NAMN = x.getElementsByTagName("NAMN")[0].firstChild.nodeValue;
+
+    // to check if the nodevalue is empty or not
+    if (x.getElementsByTagName('BESADR')[0].firstChild == null){
+      BESADR = " ";
+    }
+    else {
+      BESADR = x.getElementsByTagName("BESADR")[0].firstChild.nodeValue;
+    }
+
+    if (x.getElementsByTagName('KONTROLL')[0].firstChild == null){
+      KONTROLL = "Ingen kontroll gjord";
+    }
+    else {
+      KONTROLL = x.getElementsByTagName("KONTROLL")[0].firstChild.nodeValue;
+    }
+    var info = {
+      "OBJID" : OBJID,
+      "NAMN" : NAMN,
+      "BESADR" : BESADR,
+      "KONTROLL" : KONTROLL,
+      "BESLUT" : BESLUT
+    };
+
+    return info;
+
+  }  // end of function
+
+  function getAllRestaurantsId() {
+
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // get the whole URL
+    var url = "http://opendata.linkoping.se/ws_opendata/main.asmx/LivsmedelsobjektAlla?CustomKey=73857b55138a41aebd1958a1e9f1ebc1";  
+    xmlhttp.open("GET", url ,false);
+    xmlhttp.send();
+
+    // -----------------------
+
+    var allRestaurants = [];
+
+    // get all the objects that are livsmedelsobjekt
+    var livs = xmlhttp.responseXML.getElementsByTagName("Livsmedelsobjekt");
+    for (var i = 0; i < livs.length; i++) {
+      var restaurang = livs[i].getElementsByTagName("VERKSAM_WEBKLASS")[0].firstChild.nodeValue;
+      if (restaurang == "RESTAURANG") {
+          var objid = livs[i].getElementsByTagName("OBJID")[0].firstChild.nodeValue;
+          // save the objid on the objects that are restaurants
+          allRestaurants.push(objid);  
+    }
+  }
+
+  return allRestaurants; 
+} // end of function
+
+  
+
+
+  // --------------------
+
+    var allRestaurants = getAllRestaurantsId();
+    console.log(allRestaurants); 
+    console.log("how many restaurants in lkpg: " + allRestaurants.length); 
+
+    var restaurantList = [];
+  
+    var howMany = allRestaurants.length;
+    howMany = 50;
+
+    // print howMany resturanats that we have specified.
+  for (var i=0; i< howMany; i++){
+    restaurantList.push(getOneRestaurant(allRestaurants[i])); // skickar en restuarang!!
+  }
+
+  // show one specific the restuarants
+  console.log(restaurantList[4]);
+  console.log(restaurantList[4].NAMN);
+
+  
+
+ // how to get one restaurant from the id in the list we have stored
+
+  // must have read all the restaurants first and stored in the variable restaurantList!
+  function getRestaurantId(id) { // helpfunction
+  return restaurantList.filter(
+      function(restaurantList){return (restaurantList.OBJID == id)}
+  );
+  }
+  function getRestaurantById(id) { // USE THIS!!!
+    return getRestaurantId(id)[0];
+
+  }
+  // end of function -------------------------------------
+
+
+
+  // function to add average rating to an json-object
+
+
+  </script>
+</head>
+
+<body ng-app="Matt" class="backgroundRed">
+  <div class="jumbotron">
+    <!-- insert a image instead -->
+    <img src="images/logo/matt_logo_white_resize.svg" alt="mätt!" />
+
+    <!-- search form -->
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </form>
+  </div>
+
+  <div class="container">
+
+
+
+</div>
+</body>
+
+</html>
