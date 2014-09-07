@@ -10,7 +10,7 @@ angular.module('Matt', [])
 	$scope.avgRating; //smiley avgRating
 	$scope.noOfRatings;  //int
 	$scope.attributes; //array of attributes
-	$scope.reviews = "No reviews at the moment"; //array of reviews
+	$scope.reviews; //array of reviews
 	$scope.emotion;
 	$scope.controlColor;
 	$scope.showList = true;
