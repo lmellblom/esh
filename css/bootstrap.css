@@ -73,6 +73,23 @@
   max-width: 200px;
 }
 
+.intro {
+  background-color: white;
+  background-image: url("../images/cutlery_NEW.svg");
+}
+
+#floater img {
+     position:absolute;
+     width:300px;
+     height:265px;
+     z-index:15;
+     top:50%;
+     left:50%;
+     margin:-100px 0 0 -150px;
+     margin-top: -200px;
+   
+}
+
 html {
   font-family: sans-serif; /* changed this*/
   -webkit-text-size-adjust: 100%;
@@ -116,6 +133,7 @@ a {
 a:active,
 a:hover {
   outline: 0;
+  color: white;
 }
 abbr[title] {
   border-bottom: 1px dotted;
