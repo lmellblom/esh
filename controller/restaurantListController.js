@@ -135,7 +135,7 @@ angular.module('Matt', [])
     var allRestaurants = getAllRestaurantsId(); // get all the IDs that are restaurants! 
 
     var howMany = allRestaurants.length;
-    howMany = 100; // just so we dont load all the info now! CHANGE MAYBE LATER IF WE HAVE TIME!!
+    howMany = 10; // just so we dont load all the info now! CHANGE MAYBE LATER IF WE HAVE TIME!!
 
     // print howMany resturanats that we have specified.
   for (var i=0; i< howMany; i++){
