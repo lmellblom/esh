@@ -6,15 +6,63 @@
     <script type="text/javascript" src= "../script/angular.js"></script>
     <script type="text/javascript" src= "../script/angular-route.js"> </script>
     <script src= "../controller/reviewController.js"></script>
+    <script> 
+      function swapImage(type, id){
+        if(type == 'smiley'){
+          for (var j = 1; j <= 4; j++){
+            document.getElementById("rating_"+j).src = "../images/review/smiley" + j + ".svg";
+          }
+          document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + id + ".svg";
+        }
+        else { //type == attrib
+          if (document.getElementById("attrib_"+id).src.indexOf('selected') == -1){
+            document.getElementById("attrib_"+id).src = "../images/attributes/attrib_selected" + id + ".svg";
+          }
+          else{
+            document.getElementById("attrib_"+id).src = "../images/attributes/attrib" + id + ".svg";
+          }
+        }
+      }
+</script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/review.css"/>
+    <title>mätt</title>
   </head>
-  <body ng-app = "Rating">
-		<div ng-controller = "reviewController as rating">
+  <body ng-app = "Rating" class = "rating">
+		<div ng-controller = "reviewController as ratingController">
 			<form novalidate class="simple-form" ng-submit="send">
-				<div ng-view></div>
+
+				<div ng-show = "showRating">
+          <h1>Hur var det här då?</h1>
+            <span ng-repeat="i in [1, 2, 3, 4]">
+              <label>
+                <input type="radio"  onClick="swapImage('smiley', value)" ng-model="ratingController.average" value="{{i}}" />
+                <img id = "rating_{{i}}" ng-src="../images/review/smiley{{i}}.svg">
+              </label>
+            </span><br/>
+          <button type = "button" class = "btn btn-default btn-lg custom" ng-click = "ratingController.saveRating()" ng-style="{'background-image':'url(\'../images/icons/checkmark.svg\')'}"></button> 
+        </div>
+
+        <div ng-show = "showAttributes">
+          <div id = "attributes">
+            <span ng-repeat="i in [1,2,3,4,5,6]">
+              <label>
+                <img id = "attrib_{{i}}" ng-src="../images/attributes/attrib{{i}}.svg"><br/>
+                <input class = "attrib_button" type="button" ng-model="ratingController.given_attributes" onClick="swapImage('attrib', value)" value="{{i}}" />{{attributes[i-1]}}</input>
+              </label>
+            </span>
+          </div>
+          <button type = "button" class = "btn btn-default btn-lg custom" ng-click = "ratingController.saveAttributes()" ng-style="{'background-image':'url(\'../images/icons/checkmark.svg\')'}"></button> 
+        </div>
+
+        <div ng-show = "showComment">
+        <h1>Har du något speciellt på hjärtat?</h1>
+         <span>
+            <input type="text" ng-model="ratingController.comment" class = "input-medium comment" placeholder="some comment..">
+          </span>
+          <a href="restaurantListView.html" class = "btn btn-default btn-lg custom"  ng-style="{'background-image':'url(\'../images/icons/checkmark.svg\')'}"></a> 
+        </div>
 			</form>
-		  <pre> form = {{rating | json}}</pre>
 		</div>
 	</body>
 </html>

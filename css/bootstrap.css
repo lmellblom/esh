@@ -11,8 +11,19 @@
   color: #E16562;
 }
 
-.backgroundRed {
-  background-color: #E16562;
+.custom {
+    width: 57px !important;
+    height: 57px !important;
+}
+.comment {
+    width: 100% !important;
+}
+.attrib_button{
+  text-align: center;
+  color: rgb(123,233, 233);
+}
+.rating {
+  background-color: #fff;
 }
 
 .adress {
@@ -296,11 +307,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-size: 12px; /* EDIT: changed from 14; */
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #E16562;
 }
 input,
 button,
@@ -389,6 +400,7 @@ h6,
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
+  font-color: #E16562;
 }
 h1 small,
 h2 small,
@@ -2149,6 +2161,8 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  min-height: 15px;
+  min-width: 15px;
 }
 .btn-default:hover,
 .btn-default:focus,

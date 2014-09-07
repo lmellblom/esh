@@ -1,39 +1,27 @@
-angular.module('Rating', ['ngRoute'])
+angular.module('Rating', [])
 
-	.controller('reviewController', function($scope, $route, $routeParams, $location) {
-		$scope.$route = $route;
-	  $scope.$location = $location;
-	  $scope.$routeParams = $routeParams;
- 	})
+	.controller('reviewController', function($scope){
+	  $scope.restaurant_id = 16844;
+	  $scope.showRating = true;
+	  $scope.showAttributes = false;
+	  $scope.showComment = false;
+	  $scope.rating;
+	  $scope.given_attributes = [false, false, false, false, false, false];
+	  $scope.comment;
+	  $scope.attributes = ['festligt', 'barnvänligt', 'prisvärt', 'romantiskt', 'stora sällskap', 'spontana besök'];
 
- .controller('RatingController', function($scope, $routeParams) {
-     $scope.name = "RatingController";
-     $scope.params = $routeParams;
- })
+	  this.saveRating = function saveRating() {
+		  $scope.showRating = false;
+		  $scope.showAttributes = true;
+		  $scope.showComment = false;
+	  };
 
- .controller('AttributesController', function($scope, $routeParams) {
-     $scope.name = "AttributesController";
-     $scope.params = $routeParams;
- })
+	  this.saveAttributes = function saveAttributes() {
+		  $scope.showRating = false;
+		  $scope.showAttributes = false;
+		  $scope.showComment = true;
+	  };
+	  this.saveReview = function saveReview() {
 
- .controller('CommentController', function($scope, $routeParams) {
-     $scope.name = "CommentController";
-     $scope.params = $routeParams;
- })
-	.config(function($routeProvider, $locationProvider) {
-	  $routeProvider
-	  .when('/view/reviewView.html', {
-	    templateUrl: 'averageModule.html',
-	    controller: 'RatingController'
-	  })
-	  .when('/view/comment', {
-	    templateUrl: 'commentModule.html',
-	    controller: 'CommentController'
-	  })
-	   .when('/view/attributes', {
-	    templateUrl: 'attributesModule.html',
-	    controller: 'AttributesController'
-	  });
-	  // configure html5 to get links working on jsfiddle
-	  $locationProvider.html5Mode(true);
+	  }
 });
