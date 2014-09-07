@@ -10,7 +10,11 @@ angular.module('Matt', [])
 	$scope.avgRating; //smiley avgRating
 	$scope.noOfRatings;  //int
 	$scope.attributes; //array of attributes
-	$scope.reviews; //array of reviews
+	$scope.reviews = "No reviews at the moment"; //array of reviews
+	$scope.emotion;
+	$scope.controlColor;
+	$scope.showList = true;
+	$scope.showDetail = false;
 
 	$scope.inspections = 
 	[
@@ -96,17 +100,59 @@ angular.module('Matt', [])
       "BESADR": "Nya Tanneforsvägen 43a",
       "avgRating": "1",
       "controllStatus": "3",
+      "attributes": {
+  			"1": "false",
+  			"2": "true",
+  			"3": "true",
+  			"attr": "false",
+  			"attr": "true",
+  			"attr": "true"      	
+      },
       "listReviews": {
-      	"Review": {
+      	"review": {
       		"reviewId": "12",
       		"userName": "Olivia",
       		"restaurantId": "16844",
       		"rating": "4",
+      		"comment": "Det är min absoluta favoritrestaurang!",
       		"givenAttributes": {
-      			"babyFriendly": "false",
-      			"romantic": "true",
-      			"celebration": "true",
-      			"comment": "Det är min absoluta favoritrestaurang!"
+      			"attr": "false",
+      			"attr": "true",
+      			"attr": "true",
+      			"attr": "false",
+      			"attr": "true",
+      			"attr": "true"
+      		}
+      	},
+      	"review": {
+      		"reviewId": "13",
+      		"userName": "Linnea",
+      		"restaurantId": "16844",
+      		"rating": "2",
+      		"comment": "Typisk käck kvarterskrog!",
+      		"givenAttributes": {
+      			"attr": "false",
+      			"attr": "false",
+      			"attr": "true",
+      			"attr": "true",
+      			"attr": "false",
+      			"attr": "false"
+      		}
+      	},
+      	"review": {
+      		"reviewId": "14",
+      		"userName": "Johan",
+      		"restaurantId": "16844",
+      		"rating": "4",
+      		"comment": "This is the sweetest place!",
+      		"picture": "/images/userImages/johan.jpg",
+      		"givenAttributes": {
+      			"attr": "false",
+      			"attr": "false",
+      			"attr": "true",
+      			"attr": "true",
+      			"attr": "false",
+      			"attr": "false"
       		}
       	}
       }
@@ -147,7 +193,11 @@ angular.module('Matt', [])
   			$scope.id = $scope.restaurants[i].OBJID;
   			$scope.name = $scope.restaurants[i].NAMN;
   			$scope.address = $scope.restaurants[i].BESADR;
-  			$scope.reviews = $scope.restaurants[i].ListReviews;
+  			$scope.attributes = $scope.restaurants[i].attributes;
+  			$scope.reviews = $scope.restaurants[i].listReviews;
+  			$scope.emotion = this.setEmotion(i);
+  			$scope.controlColor = this.setControllColor(i);
+  			console.log($scope.emotion);
 			}
 		}
 
@@ -163,8 +213,6 @@ angular.module('Matt', [])
   			}
   		}
   	}
-
-
   };
 
   this.setEmotion = function setEmotion(index) { //TODO: set all images
@@ -195,33 +243,9 @@ angular.module('Matt', [])
   On clicking on a specific restaurant, show restaurant detail view */
   this.click = function click(id) {
 
+  	$scope.showList = false;
+  	$scope.showDetail = true;
 		$scope.sometext = "I hate this text";
-		/*this.displayRestaurant(id);
-    objid = $scope.restaurants[id].OBJID;
-    console.log($scope.restaurants[id].NAMN);
-    console.log("objid:" + objid); */
-    console.log("id som skickades in: " + id);
+		this.displayRestaurant(id);
   };
-
-  /*
-  this.getRestaurants = function getRestaurants() {
-
-        //var request = "http://opendata.linkoping.se/ws_opendata/main.asmx/LivsmedelsobjektAlla?CustomKey=73857b55138a41aebd1958a1e9f1ebc1";
-        var request = "http://opendata.linkoping.se/ws_opendata/main.asmx/Livsmedelsobjekt?CustomKey=73857b55138a41aebd1958a1e9f1ebc1&objid=433";
-        if (window.XMLHttpRequest)
-        {
-            xhttp=new XMLHttpRequest();
-        }
-        else // code for IE5 and IE6
-        {
-          xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xhttp.open("GET",request,false);
-        xhttp.send();
-        xmlDoc=xhttp.responseXML;
-
-        console.log(this.xmlToJson(xmlDoc.firstNode));
-
-	};*/
-
 });

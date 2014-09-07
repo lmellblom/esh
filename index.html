@@ -28,32 +28,68 @@
 
 		<div ng-controller="restaurantListController as restController">
 
-			<!-- align the restuarant in rows with two cells -->
-			<div ng-repeat="restaurant in restaurants">
-				<span ng-if="$index % 2 == 0">
-			    	<div class="row list-group">
+			<div ng-show="showList">
+				<!-- align the restuarant in rows with two cells -->
+				<div ng-repeat="restaurant in restaurants">
+					<span ng-if="$index % 2 == 0">
+				    	<div class="row list-group">
 
-			    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
-			        	<div ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
-			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
-			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
-			              	<span class="pull-right">
-			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
-			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
-			              	</span>
-			            </div>
-			            
-			            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
-			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
-			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
-			              	<span class="pull-right">
-			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
-			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
-			              	</span>
-			            </div>
-			        </div>
-			    </span>
+				    		<!-- need to have these two so we can have two in same row easily with ng-repeat -->	
+				        	<div ng-click="restController.click(restaurants[$index+0].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+0]">
+				             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
+				              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+				              	<span class="pull-right">
+				              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+				              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+				              	</span>
+				            </div>
+				            
+				            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
+				              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
+				              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+				              	<span class="pull-right">
+				              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
+				              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+				              	</span>
+				            </div>
+				        </div>
+				    </span>
+				</div>
 			</div>
+
+			<div ng-show="showDetail" class="details">
+				<h5 class="hideText colorRed">{{name}}</h5>
+				<p class="adress">{{address}}</p>
+				<img ng-src="{{emotion}}"/>
+				<img ng-src="{{controlColor}}"/>
+				<p class="textfield-red">Lämna recension!</p> <!-- Tailor div -->
+				<br></br>
+				<div class="col-xs-2" ng-repeat="i in [1,2,3,4,5]">
+					<img src="images/restaurantDetail/attribute/attr{{i}}.svg"/>
+					<!--
+					1 attfira_restaurangvy
+    			2 barn_restaurangvy
+    			3 mindrebudget_restaurangvy
+    			4 romantik_restaurangvy
+    			5 storasallskap_restaurangvy
+    			6 tisdpress_restaurangvy
+					-->
+				</div>
+				<br></br>
+				<div class="reviews">
+					<div ng-repeat="review in reviews">
+						<br></br>
+						<div class="col-xs-3">
+							<img style="width:50px;" src="images/userImages/johan.jpg"/>
+						</div>
+						<!--<div ng-repeat="attr in review.givenAttributes | filter:{attr:true}">-->
+						<div class="col-xs-9">
+							<p class="textfield-red">{{review.comment}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
