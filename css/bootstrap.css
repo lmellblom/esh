@@ -2144,6 +2144,8 @@ select[multiple].input-lg {
   background-color: #E16562;
   border: 1px solid transparent;
   border-radius: 4px;
+} a:hover {
+  color: white;
 }
 
 .textfield-red-wide { /* edit - textfield w rounded corners, full width */
