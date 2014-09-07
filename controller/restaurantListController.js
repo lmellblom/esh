@@ -157,15 +157,24 @@ onLoadRestaurants();
   this.setEmotion = function setEmotion(index) { //TODO: set all images
 
   	if($scope.restaurants[index].avgRating == null) {
-  		$scope.restaurants[index].emotion = "../images/list/smiley_glad_listvy.svg";
-			return "../images/list/smiley_glad_listvy.svg"; //TODO: change to unknown
-  	} else if($scope.restaurants[index].avgRating <2) {
+  		$scope.restaurants[index].emotion = "../images/list/kontroll_fragetecken_listvy.svg";
+			return "../images/list/kontroll_fragetecken_listvy.svg"; 
+
+  	} else if($scope.restaurants[index].avgRating <=1) {
+  		$scope.restaurants[index].emotion = "../images/list/smiley_ledsen_listvy.svg";
+  		return "../images/list/smiley_ledsen_listvy.svg";
+
+  	} else if($scope.restaurants[index].avgRating > 1 && $scope.restaurants[index].avgRating <= 2) {
+  		$scope.restaurants[index].emotion = "../images/list/smiley_neutral_listvy.svg";
+  		return "../images/list/smiley_neutral_listvy.svg";
+
+  	} else if($scope.restaurants[index].avgRating > 2 && $scope.restaurants[index].avgRating <= 3) {
   		$scope.restaurants[index].emotion = "../images/list/smiley_glad_listvy.svg";
   		return "../images/list/smiley_glad_listvy.svg";
-  	} else {
+  	} else if ($scope.restaurants[index].avgRating > 3) {
   		$scope.restaurants[index].emotion = "../images/list/smiley_asglad_listvy.svg";
-  		return "../images/list/smiley_asglad_listvy.svg";
-  	}  
+  		return "../images/list/smiley_asglad_listvy.svg";  		
+  	} 
   };
 
   this.setControllColor = function setControllColor(index) { //TODO: set all images
