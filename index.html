@@ -38,17 +38,17 @@
 			             	<h5 class="hideText colorRed">{{restaurants[$index+0].NAMN}}</h5>
 			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
 			              	<span class="pull-right">
-			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
-			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setEmotion($index)}}" alt="recension" />
+			              		<img ng-src="{{restController.setControllColor($index)}}" alt="kontroll" />
 			              	</span>
 			            </div>
 			            
 			            <div ng-click="restController.click(restaurants[$index+1].OBJID)" class="list-group-item col-xs-6 col-md-6" ng-if="restaurants[$index+1]">
 			              	<h5 class="colorRed hideText">{{restaurants[$index+1].NAMN}}</h5>
-			              	<p class="adress">{{restaurants[$index+0].BESADR}}</p>
+			              	<p class="adress">{{restaurants[$index+1].BESADR}}</p>
 			              	<span class="pull-right">
-			              		<img ng-src="{{restController.setEmotion($index)}}" alt="glad" />
-			              		<img ng-src="{{restController.setControllColor($index)}}" alt="glad" />
+			              		<img ng-src="{{restController.setEmotion($index+1)}}" alt="recension" />
+			              		<img ng-src="{{restController.setControllColor($index+1)}}" alt="kontroll" />
 			              	</span>
 			            </div>
 			        </div>
