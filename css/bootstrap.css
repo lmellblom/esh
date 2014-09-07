@@ -11,9 +11,13 @@
   color: #E16562;
 }
 
+.addMargin {
+    margin-top: 150px; /*EDIT*/
+}
+
 .custom {
     width: 57px !important;
-    height: 57px !important;
+    height: 57px !important; 2
 }
 .comment {
     width: 100% !important;
@@ -37,6 +41,18 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.centerOfPage {
+  margin-top: 10px;
+  text-align: center;  
+}
+
+.smileys {
+  margin: auto; 
+  padding-bottom: 20px;
+  padding-top: 20px;
+  max-width: 200px;
 }
 
 html {
@@ -478,7 +494,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 32px;
 }
 h2,
 .h2 {
@@ -774,7 +790,6 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 150px; /*EDIT*/
 }
 @media (min-width: 768px) {
   .container {
@@ -2062,7 +2077,7 @@ select[multiple].input-lg {
       -ms-user-select: none;
           user-select: none;
   background-image: none;
-  border: 1px solid transparent;
+  border: 1px solid white;
   border-radius: 4px;
 }
 .textfield-red { /* edit - textfield w rounded corners */
@@ -2160,7 +2175,7 @@ fieldset[disabled] .btn {
 .btn-default {
   color: #333;
   background-color: #fff;
-  border-color: #ccc;
+  border-color: #fff;
   min-height: 15px;
   min-width: 15px;
 }
