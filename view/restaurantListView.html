@@ -76,12 +76,17 @@
 				<img ng-src="{{controllColor}}" style="padding-right:10px;"/>
 				<a class="textfield-red" href="reviewView.html">Lämna recension!</a> <!-- Tailor div -->
 			</div>
-			<br></br>
-			<div class="col-xs-2" ng-repeat="i in [1,2,3,4,5]" style="margin-top:20px; margin-bottom:20px;">
+			</br></br>
+			<div class="col-xs-2" ng-repeat="i in [1,2,3,4,5, 6]" style="margin-top:20px; margin-bottom:20px;">
 				<img ng-src="../images/restaurantDetail/attribute/attr{{i}}.svg"/>
 			</div>
-			<br></br>
+			</br></br>
 			<div class="details">
+				<p>Ingen avvikelse på kontrollen.</p>
+
+				<p>Inga recensioner för närvarande!</p>
+
+
 				<div ng-repeat="review in reviews" class="one-review">
 					<div class="col-xs-3">
 						<img style="width:50px;border-radius:6px;" src="../images/userImages/johan.jpg"/>
