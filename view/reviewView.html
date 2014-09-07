@@ -54,7 +54,11 @@
         </div>
 
         <div ng-show = "showAttributes">
-          <div id = "attributes">
+
+        <h1 class="colorRed">Passade besöket för...</h1>
+
+          <div id = "attributes" class="colorRed">
+
             <span ng-repeat="i in [1,2,3,4,5,6]">
               <label>
                 <img id = "attrib_{{i}}" ng-src="../images/attributes/attrib{{i}}.svg"><br/>
@@ -62,14 +66,20 @@
               </label>
             </span>
           </div>
+
           <button type = "button" class = "btn btn-default btn-lg custom" ng-click = "ratingController.saveAttributes()" ng-style="{'background-image':'url(\'../images/icons/checkmark.svg\')'}"></button> 
         </div>
 
         <div ng-show = "showComment">
-        <h1>Har du något speciellt på hjärtat?</h1>
+        <h1 class="colorRed">Har du något speciellt på hjärtat?</h1>
+
+        <div id="commentField">
          <span>
-            <input type="text" ng-model="ratingController.comment" class = "input-medium comment" placeholder="some comment..">
+            <input type="text" ng-model="ratingController.comment" class = "input-medium comment form-control" placeholder="...">
           </span>
+
+        </div>
+
           <a href="restaurantListView.html" class = "btn btn-default btn-lg custom"  ng-style="{'background-image':'url(\'../images/icons/checkmark.svg\')'}"></a> 
         </div>
 			</form>
