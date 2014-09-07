@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src= "../script/angular.js"></script>
     <script src= "../controller/restaurantListController.js"></script>
+    <script src= "../controller/reviewController.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/review.css"/>
     <title>Mätt</title>
 </head>
 
-<body ng-app="Matt" class="backgroundRed" ng-controller="restaurantListController as restController">
+<body ng-app="Matt" class="backgroundRed">
+	<div ng-controller="restaurantListController as restController">
 	<div ng-show="showLogo" class="jumbotron navbar navbar-default navbar-fixed-top">
 		<!-- insert a image instead -->
 		<img src="../images/logo/matt_logo_white_resize.svg" alt="mätt!" />
@@ -72,7 +74,7 @@
 				<p class="adress">{{address}}</p>
 				<img ng-src="{{emotion}}"/>
 				<img ng-src="{{controllColor}}" style="padding-right:10px;"/>
-				<p class="textfield-red">Lämna recension!</p> <!-- Tailor div -->
+				<a class="textfield-red" href="reviewView.html">Lämna recension!</a> <!-- Tailor div -->
 			</div>
 			<br></br>
 			<div class="col-xs-2" ng-repeat="i in [1,2,3,4,5]" style="margin-top:20px; margin-bottom:20px;">
@@ -92,9 +94,14 @@
 			</div>
 			<br></br>
 		</div>
-
 		</div>
 	</div>
+		
+		<div ng-controller = "reviewController as ratingController">
+			<div ng-include src="'reviewView.html'"></div>
+		</div>
+
+		</div>
 
 </body>
 </html>
