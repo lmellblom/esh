@@ -1,12 +1,13 @@
 angular.module('Rating', [])
 
 	.controller('reviewController', function($scope){
-		/*$scope.$route = $route;
-	  $scope.$location = $location;
-	  $scope.$routeParams = $routeParams;*/
+	  $scope.restaurant_id = 16844;
 	  $scope.showRating = true;
 	  $scope.showAttributes = false;
 	  $scope.showComment = false;
+	  $scope.rating;
+	  $scope.given_attributes = [false, false, false, false, false, false];
+	  $scope.comment;
 	  $scope.attributes = ['festligt', 'barnvänligt', 'prisvärt', 'romantiskt', 'stora sällskap', 'spontana besök'];
 
 	  this.saveRating = function saveRating() {
@@ -20,4 +21,7 @@ angular.module('Rating', [])
 		  $scope.showAttributes = false;
 		  $scope.showComment = true;
 	  };
+	  this.saveReview = function saveReview() {
+
+	  }
 });
