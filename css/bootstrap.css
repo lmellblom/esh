@@ -11,6 +11,11 @@
   color: #E16562;
 }
 
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+}
 .attrib_button{
   text-align: center;
   color: rgb(123,233, 233);
@@ -2089,6 +2094,8 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  min-height: 15px;
+  min-width: 15px;
 }
 .btn-default:hover,
 .btn-default:focus,

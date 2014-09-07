@@ -1,40 +1,23 @@
-angular.module('Rating', ['ngRoute'])
+angular.module('Rating', [])
 
-	.controller('reviewController', function($scope, $route, $routeParams, $location) {
-		$scope.$route = $route;
+	.controller('reviewController', function($scope){
+		/*$scope.$route = $route;
 	  $scope.$location = $location;
-	  $scope.$routeParams = $routeParams;
+	  $scope.$routeParams = $routeParams;*/
+	  $scope.showRating = true;
+	  $scope.showAttributes = false;
+	  $scope.showComment = false;
 	  $scope.attributes = ['festligt', 'barnvänligt', 'prisvärt', 'romantiskt', 'stora sällskap', 'spontana besök'];
- 	})
 
- .controller('RatingController', function($scope, $routeParams) {
-     $scope.name = "RatingController";
-     $scope.params = $routeParams;
- })
+	  this.saveRating = function saveRating() {
+		  $scope.showRating = false;
+		  $scope.showAttributes = true;
+		  $scope.showComment = false;
+	  };
 
- .controller('AttributesController', function($scope, $routeParams) {
-     $scope.name = "AttributesController";
-     $scope.params = $routeParams;
- })
-
- .controller('CommentController', function($scope, $routeParams) {
-     $scope.name = "CommentController";
-     $scope.params = $routeParams;
- })
-	.config(function($routeProvider, $locationProvider) {
-	  $routeProvider
-	  .when('/view/reviewView.html', {
-	    templateUrl: 'averageModule.html',
-	    controller: 'RatingController'
-	  })
-	  .when('/view/comment', {
-	    templateUrl: 'commentModule.html',
-	    controller: 'CommentController'
-	  })
-	   .when('/view/attributes', {
-	    templateUrl: 'attributesModule.html',
-	    controller: 'AttributesController'
-	  });
-
-	  $locationProvider.html5Mode(true);
+	  this.saveAttributes = function saveAttributes() {
+		  $scope.showRating = false;
+		  $scope.showAttributes = false;
+		  $scope.showComment = true;
+	  };
 });
