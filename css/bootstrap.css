@@ -11,6 +11,14 @@
   color: #E16562;
 }
 
+.addPadding {
+  padding-top: 10px;
+}
+
+.closeBtn {
+  padding-bottom: 15px;
+margin-bottom: 10px;
+}
 #attributes {
   margin: auto; 
   padding-bottom: 20px;

@@ -39,7 +39,9 @@
 
 				<div ng-show = "showRating">
 
-          <h1 class="colorRed">Hur var din helhetsupplevelse?</h1>
+          <div class="pull-right closeBtn"><img src="../images/review/close.svg" alt="Stäng" /></div>
+
+          <h1 class="addPadding colorRed">Hur var din helhetsupplevelse?</h1>
 
           <div class="smileys">
             <span ng-repeat="i in [1, 2, 3, 4]">
@@ -55,7 +57,10 @@
 
         <div ng-show = "showAttributes">
 
-        <h1 class="colorRed">Passade besöket för...</h1>
+        <div class="pull-right closeBtn"><img src="../images/review/close.svg" alt="Stäng" /></div>
+
+
+        <h1 class="addPadding colorRed">Passade besöket för...</h1>
 
           <div id = "attributes" class="colorRed">
 
@@ -71,7 +76,11 @@
         </div>
 
         <div ng-show = "showComment">
-        <h1 class="colorRed">Har du något speciellt på hjärtat?</h1>
+                  <div class="pull-right closeBtn"><img src="../images/review/close.svg" alt="Stäng" /></div>
+                  <div class="pull-left closeBtn"><img width="25px" src="../images/review/back.svg" alt="Tillbaka" /></div>
+
+
+        <h1 class="addPadding colorRed">Har du något speciellt på hjärtat?</h1>
 
         <div id="commentField">
          <span>
