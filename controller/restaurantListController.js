@@ -116,7 +116,7 @@ angular.module('Matt', [])
 } // end of function
 
  // how to get one restaurant from the id in the list we have stored
-// 13652
+
   // must have read all the restaurants first and stored in the variable restaurantList!
   function getRestaurantId(id) { // helpfunction
     rest = $scope.restaurants;
@@ -135,7 +135,7 @@ angular.module('Matt', [])
     var allRestaurants = getAllRestaurantsId(); // get all the IDs that are restaurants! 
 
     var howMany = allRestaurants.length;
-    howMany = 10; // just so we dont load all the info now! CHANGE MAYBE LATER IF WE HAVE TIME!!
+    howMany = 26; // just so we dont load all the info now! CHANGE MAYBE LATER IF WE HAVE TIME!!
 
     // print howMany resturanats that we have specified.
   for (var i=0; i< howMany; i++){
@@ -179,6 +179,7 @@ onLoadRestaurants();
   On clicking on a specific restaurant, show restaurant detail view */
   this.click = function click(id) {
     console.log("id som skickades in: " + id);
+    console.log(getRestaurantById(id));
   };
 
 
