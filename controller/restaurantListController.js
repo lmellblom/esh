@@ -15,6 +15,8 @@ angular.module('Matt', [])
 	$scope.controllColor;
 	$scope.showList = true;
 	$scope.showDetail = false;
+	$scope.showLogo = true;
+	$scope.showName = false;
   $scope.restaurants = [];
 
   // help functions! -------------------------------------------------------------
@@ -186,10 +188,19 @@ onLoadRestaurants();
   On clicking on a specific restaurant, show restaurant detail view */
   this.click = function click(id) {
   	$scope.showList = false;
+  	$scope.showLogo = false;
+  	$scope.showName = true;
   	$scope.showDetail = true;
 		$scope.sometext = "I hate this text";
 		this.displayRestaurant(id);
     console.log("id som skickades in: " + id);
     console.log(getRestaurantById(id));
   };
+
+  this.back = function back() {
+  	$scope.showList = true;
+  	$scope.showLogo = true;
+  	$scope.showName = false;
+  	$scope.showDetail = false;
+  }
 });

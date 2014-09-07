@@ -479,6 +479,7 @@ h3,
 h4,
 .h4 {
   font-size: 18px;
+  color: white;
 }
 h5,
 .h5 {
@@ -796,6 +797,7 @@ pre code {
   margin-bottom:100px;
   padding: 10px;
   background-color: #ffffff;
+  vertical-align: top;
 }
 .one-review { /*EDIT: one review view*/
   margin-right: -15px;
@@ -2056,6 +2058,7 @@ select[multiple].input-lg {
   padding: 2px 6px;
   margin-bottom: 0;
   font-size: 12px;
+  color: white;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;

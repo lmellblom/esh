@@ -10,14 +10,8 @@
     <title>Mätt</title>
 </head>
 
-<div class="device-mockup" data-device="iphone5" data-orientation="portrait" data-color="white">
-    <div class="device">
-        <div class="screen">
-            <!-- PUT CONTENTS HERE -->
-
-
-<body ng-app="Matt" class="backgroundRed">
-	<div class="jumbotron navbar navbar-default navbar-fixed-top">
+<body ng-app="Matt" class="backgroundRed" ng-controller="restaurantListController as restController">
+	<div ng-show="showLogo" class="jumbotron navbar navbar-default navbar-fixed-top">
 		<!-- insert a image instead -->
 		<img src="../images/logo/matt_logo_white_resize.svg" alt="mätt!" />
 		<span class="pull-right center-block"><img width="25px" src="../images/list/about.svg" alt="Om oss" /></span>
@@ -30,8 +24,15 @@
 		</form>
 	</div>
 
+	<div ng-show="showName" class="jumbotron navbar navbar-default navbar-fixed-top">
+		<!-- insert a image instead -->
+		<span class="pull-right center-block"><img width="25px" src="../images/list/about.svg" alt="Om oss" /></span>
+		<a ng-click="restController.back()" class="pull-left center-block"><</a>
+		<h4 class="hideText">{{name}}</h4>
+	</div>
+
 	<div class="container">
-		<div ng-controller="restaurantListController as restController">
+		<div>
 
 			<!-- align the restuarant in rows with two cells -->
 			<div ng-show="showList">
