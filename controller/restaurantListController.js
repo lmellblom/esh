@@ -12,240 +12,183 @@ angular.module('Matt', [])
 	$scope.attributes; //array of attributes
 	$scope.reviews; //array of reviews
 	$scope.emotion;
-	$scope.controlColor;
+	$scope.controllColor;
 	$scope.showList = true;
 	$scope.showDetail = false;
+  $scope.restaurants = [];
 
-	$scope.inspections = 
-	[
-		{
-	    "OBJID": "2632",
-	    "INSPEKTIONSID": "274367",
-	    "BESLUT": "Ingen_extrakontroll krävs",
-	    "INSPEKTIONSDATUM": "20130417",
-	    "INSPEKTIONSTYP": "Inspektion",
-	    "INSPEKTION_OANMALD": "Oanmäld",
-	    "SYFTE": "Ordinarie kontroll"
-		},
-		{
-	    "OBJID": "24264",
-	    "INSPEKTIONSID": "293258",
-	    "BESLUT": "Ingen_extrakontroll krävs",
-	    "INSPEKTIONSDATUM": "20140220",
-	    "INSPEKTIONSTYP": "Inspektion",
-	    "INSPEKTION_OANMALD": "Oanmäld",
-	    "SYFTE": "Ordinarie kontroll"
-  	},
-  	{
-	    "OBJID": "503",
-	    "INSPEKTIONSID": "292425",
-	    "BESLUT": "Ingen_extrakontroll krävs",
-	    "INSPEKTIONSDATUM": "20140213",
-	    "INSPEKTIONSTYP": "Revision",
-	    "INSPEKTION_OANMALD": "Anmäld",
-	    "SYFTE": "Ordinarie kontroll"
-  	},
-  	{
-	    "OBJID": "467",
-	    "INSPEKTIONSID": "282685",
-	    "BESLUT": "Ingen_extrakontroll krävs",
-	    "INSPEKTIONSDATUM": "20130917",
-	    "INSPEKTIONSTYP": "Inspektion",
-	    "INSPEKTION_OANMALD": "Oanmäld",
-	    "SYFTE": "Ordinarie kontroll",
-	    "ListaAvvikelser": {
-		      "Avvikelse": {
-		        "INSPEKTIONSID": "282685",
-		        "AVVIKELSE_GRUPP": "06",
-		        "AVVIKELSE_DETALJID": "0602",
-		        "AVVIKELSE": "Övrigt"
-		      }
-		    }
-  	},
-  	{
-	    "OBJID": "23571",
-	    "INSPEKTIONSID": "302276",
-	    "BESLUT": "Extrakontroll_krävs",
-	    "INSPEKTIONSDATUM": "20140624",
-	    "INSPEKTIONSTYP": "Inspektion",
-	    "INSPEKTION_OANMALD": "Oanmäld",
-	    "SYFTE": "Ordinarie kontroll",
-	    "ListaAvvikelser": {
-		      "Avvikelse": {
-		        "INSPEKTIONSID": "302276",
-		        "AVVIKELSE_GRUPP": "03",
-		        "AVVIKELSE_DETALJID": "0301",
-		        "AVVIKELSE": "Rutin - mikrobiologi"
-		      }
-		    }
-  	}
-	]
-
-  $scope.restaurants = 
-  [
-    {
-      "OBJID": "2632",
-      "NAMN": "104:ans Närbutik",
-      "VERKSAM": "Livsmedelsbutik ej hantering",
-      "VERKSAM_WEBKLASS": "BUTIKHANDEL",
-      "BESADR": "Munkhagsgatan 104",
-      "KONTROLL": "Kontroll utförd",
-      "avgRating": "3"
-    },
-    {
-      "OBJID": "16844", //Saknas kontroll!
-      "NAMN": "43:ans Kvarterskrog",
-      "VERKSAM": "Restaurang",
-      "VERKSAM_WEBKLASS": "RESTAURANG",
-      "BESADR": "Nya Tanneforsvägen 43a",
-      "avgRating": "1",
-      "controllStatus": "3",
-      "attributes": {
-  			"1": "false",
-  			"2": "true",
-  			"3": "true",
-  			"attr": "false",
-  			"attr": "true",
-  			"attr": "true"      	
-      },
-      "listReviews": {
-      	"review": {
-      		"reviewId": "12",
-      		"userName": "Olivia",
-      		"restaurantId": "16844",
-      		"rating": "4",
-      		"comment": "Det är min absoluta favoritrestaurang!",
-      		"givenAttributes": {
-      			"attr": "false",
-      			"attr": "true",
-      			"attr": "true",
-      			"attr": "false",
-      			"attr": "true",
-      			"attr": "true"
-      		}
-      	},
-      	"review": {
-      		"reviewId": "13",
-      		"userName": "Linnea",
-      		"restaurantId": "16844",
-      		"rating": "2",
-      		"comment": "Typisk käck kvarterskrog!",
-      		"givenAttributes": {
-      			"attr": "false",
-      			"attr": "false",
-      			"attr": "true",
-      			"attr": "true",
-      			"attr": "false",
-      			"attr": "false"
-      		}
-      	},
-      	"review": {
-      		"reviewId": "14",
-      		"userName": "Johan",
-      		"restaurantId": "16844",
-      		"rating": "4",
-      		"comment": "This is the sweetest place!",
-      		"picture": "/images/userImages/johan.jpg",
-      		"givenAttributes": {
-      			"attr": "false",
-      			"attr": "false",
-      			"attr": "true",
-      			"attr": "true",
-      			"attr": "false",
-      			"attr": "false"
-      		}
-      	}
+  // help functions! -------------------------------------------------------------
+  function getOneRestaurant(objid) {
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
       }
-    },
-    {
-      "OBJID": "24264",
-      "NAMN": "68:ans Pizzeria och Restaurang",
-      "VERKSAM": "Pizzeria",
-      "VERKSAM_WEBKLASS": "RESTAURANG",
-      "BESADR": "Rydsvägen 68d",
-      "KONTROLL": "Kontroll utförd",
-      "avgRating": "1"
-    },
-    {
-      "OBJID": "503",
-      "NAMN": "7-Eleven Universitetssjukhus",
-      "VERKSAM": "Livsmedelsbutik med hantering",
-      "VERKSAM_WEBKLASS": "BUTIKHANDEL",
-      "BESADR": "Sjukhusvägen 6",
-      "KONTROLL": "Kontroll utförd",
-      "controllStatus": "1"
-    },
-    {
-	    "OBJID": "23571",
-	    "NAMN": "Naked Juicebar",
-	    "VERKSAM": "Café",
-	    "VERKSAM_WEBKLASS": "RESTAURANG",
-	    "BESADR": "Nygatan 22",
-	    "KONTROLL": "Kontroll utförd",
-	    "controllStatus": "2"
-  	}
-  ]
+    else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    var url = "http://opendata.linkoping.se/ws_opendata/main.asmx/Livsmedelsobjekt?CustomKey=73857b55138a41aebd1958a1e9f1ebc1&objid=" + objid;
 
-  this.displayRestaurant = function displayRestaurant(id) {
+    xmlhttp.open("GET", url ,false);
+    xmlhttp.send();
 
-  	for(var i=0; i<$scope.restaurants.length; i++) {
-  		if($scope.restaurants[i].OBJID == id) {
-  			$scope.id = $scope.restaurants[i].OBJID;
-  			$scope.name = $scope.restaurants[i].NAMN;
-  			$scope.address = $scope.restaurants[i].BESADR;
-  			$scope.attributes = $scope.restaurants[i].attributes;
-  			$scope.reviews = $scope.restaurants[i].listReviews;
-  			$scope.emotion = this.setEmotion(i);
-  			$scope.controlColor = this.setControllColor(i);
-  			console.log($scope.emotion);
-			}
-		}
+    var allInspections = []; // innehåller bara beslut
+    var OBJID,NAMN,BESADR, KONTROLL,BESLUT;
 
-		//TODO: put this in initialisation 
-		for(var i=0; i<$scope.inspections.length; i++) {
-  		if($scope.inspections[i].OBJID == id) {
-  			if($scope.inspections[i].BESLUT == "Ingen_extrakontroll krävs") {
-  				$scope.controllStatus = 1; //green
-  			} else if ($scope.inspections[i].BESLUT == "Extrakontroll_krävs") {
-  				$scope.controllStatus = 2; //yellow 
-  			} else {
-  				$scope.controllStatus = 3; //unknown
-  			}
-  		}
-  	}
-  };
+    var x = xmlhttp.responseXML;
+
+    var inspektioner = x.getElementsByTagName("Inspektion");
+    if (inspektioner.length>0) {
+      var beslut = inspektioner[inspektioner.length-1].getElementsByTagName("BESLUT")[0].firstChild.nodeValue;
+      if (beslut == "Ingen_extrakontroll krävs") {
+        BESLUT = 1;
+      }
+      else if (beslut == "Extrakontroll_krävs"){
+        BESLUT = 2; 
+      }
+    }
+    else {
+      //BESLUT = "Ingen kontroll gjord";
+      BESLUT = 0;
+    }
+
+    OBJID = x.getElementsByTagName("OBJID")[0].firstChild.nodeValue;
+    NAMN = x.getElementsByTagName("NAMN")[0].firstChild.nodeValue;
+
+    // to check if the nodevalue is empty or not
+    if (x.getElementsByTagName('BESADR')[0].firstChild == null){
+      BESADR = '"Adress saknas"';
+    }
+    else {
+      BESADR = x.getElementsByTagName("BESADR")[0].firstChild.nodeValue;
+    }
+
+/* MAYBE USE LATER
+    if (x.getElementsByTagName('KONTROLL')[0].firstChild == null){
+      KONTROLL = "Ingen kontroll gjord";
+    }
+    else {
+      KONTROLL = x.getElementsByTagName("KONTROLL")[0].firstChild.nodeValue;
+    }
+*/
+    var info = {
+      "OBJID" : OBJID,
+      "NAMN" : NAMN,
+      "BESADR" : BESADR,
+      "BESLUT" : BESLUT // stores info 0,1,2 if there are no inspektions, no extra conroll och extra controll. 
+    };
+
+    return info;
+
+  }  // end of function
+
+  function getAllRestaurantsId() {
+
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // get the whole URL
+    var url = "http://opendata.linkoping.se/ws_opendata/main.asmx/LivsmedelsobjektAlla?CustomKey=73857b55138a41aebd1958a1e9f1ebc1";  
+    xmlhttp.open("GET", url ,false);
+    xmlhttp.send();
+
+    // -----------------------
+
+    var allRestaurants = [];
+
+    // get all the objects that are livsmedelsobjekt
+    var livs = xmlhttp.responseXML.getElementsByTagName("Livsmedelsobjekt");
+    for (var i = 0; i < livs.length; i++) {
+      var restaurang = livs[i].getElementsByTagName("VERKSAM_WEBKLASS")[0].firstChild.nodeValue;
+      if (restaurang == "RESTAURANG") {
+          var objid = livs[i].getElementsByTagName("OBJID")[0].firstChild.nodeValue;
+          // save the objid on the objects that are restaurants
+          allRestaurants.push(objid);  
+    }
+  }
+
+  return allRestaurants; 
+} // end of function
+
+ // how to get one restaurant from the id in the list we have stored
+// 13652
+  // must have read all the restaurants first and stored in the variable restaurantList!
+  function getRestaurantId(id) { // helpfunction
+    rest = $scope.restaurants;
+  return rest.filter(
+      function(rest){return (rest.OBJID == id)}
+  );
+  }
+  function getRestaurantById(id) { // USE THIS!!!
+    return getRestaurantId(id)[0];
+
+  }
+  // end of function -------------------------------------
+
+  function onLoadRestaurants() {
+    console.log('test');
+    var allRestaurants = getAllRestaurantsId(); // get all the IDs that are restaurants! 
+
+    var howMany = allRestaurants.length;
+    howMany = 10; // just so we dont load all the info now! CHANGE MAYBE LATER IF WE HAVE TIME!!
+
+    // print howMany resturanats that we have specified.
+  for (var i=0; i< howMany; i++){
+    var oneRest = getOneRestaurant(allRestaurants[i]);
+    oneRest["avgRating"]=Math.floor(Math.random()*4); // generates a random number between 0,1,2,3
+    $scope.restaurants.push(oneRest); // skickar en restuarang!!
+  }
+
+  console.log($scope.restaurants);
+
+}
+
+// kanske fult men kör igång denna funktion...
+onLoadRestaurants(); 
 
   this.setEmotion = function setEmotion(index) { //TODO: set all images
 
   	if($scope.restaurants[index].avgRating == null) {
-			return "images/list/kontroll_gron_listvy.svg"; //TODO: change to unknown
+  		$scope.restaurants[index].emotion = "../images/list/smiley_glad_listvy.svg";
+			return "../images/list/smiley_glad_listvy.svg"; //TODO: change to unknown
   	} else if($scope.restaurants[index].avgRating <2) {
-  		return "images/list/smiley_glad_listvy.svg";
+  		$scope.restaurants[index].emotion = "../images/list/smiley_glad_listvy.svg";
+  		return "../images/list/smiley_glad_listvy.svg";
   	} else {
-  		return "images/list/smiley_asglad_listvy.svg";
-  	}
+  		$scope.restaurants[index].emotion = "../images/list/smiley_asglad_listvy.svg";
+  		return "../images/list/smiley_asglad_listvy.svg";
+  	}  
   };
 
   this.setControllColor = function setControllColor(index) { //TODO: set all images
+    var imgList = ["../images/list/kontroll_fragetecken_listvy.svg", "../images/list/kontroll_gron_listvy.svg","../images/list/kontroll_rod_listvy.svg" ];
+    $scope.restaurants[index].controllColor = imgList[$scope.restaurants[index].BESLUT];
+    return imgList[$scope.restaurants[index].BESLUT]; 
+  };
 
-  	if($scope.restaurants[index].controllStatus == null) {
-  		return "images/list/smiley_glad_listvy.svg";
-  	} else if($scope.restaurants[index].controllStatus == 1) {
-  		return "images/list/kontroll_gron_listvy.svg";
-  	} else if ($scope.restaurants[index].controllStatus == 2) {
-  			return "images/list/kontroll_rod_listvy.svg";
-  	} else {
-  		return "images/list/smiley_glad_listvy.svg";
-  	}
+  this.displayRestaurant = function displayRestaurant(id) {
+    var rest = getRestaurantById(id); // find the restaurant in the list
+    $scope.id = rest.OBJID;
+    $scope.name = rest.NAMN;
+    $scope.address = rest.BESADR 
+    $scope.emotion = rest.emotion;
+    $scope.controllColor = rest.controllColor;
+    //$scope.reviews = rest.ListReviews;
   };
 
   /* function: onClick()
   On clicking on a specific restaurant, show restaurant detail view */
   this.click = function click(id) {
-
   	$scope.showList = false;
   	$scope.showDetail = true;
 		$scope.sometext = "I hate this text";
 		this.displayRestaurant(id);
+    console.log("id som skickades in: " + id);
   };
 });
