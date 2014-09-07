@@ -4,6 +4,7 @@ angular.module('Rating', ['ngRoute'])
 		$scope.$route = $route;
 	  $scope.$location = $location;
 	  $scope.$routeParams = $routeParams;
+	  $scope.attributes = ['festligt', 'barnvänligt', 'prisvärt', 'romantiskt', 'stora sällskap', 'spontana besök'];
  	})
 
  .controller('RatingController', function($scope, $routeParams) {

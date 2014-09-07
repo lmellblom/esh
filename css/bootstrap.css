@@ -11,6 +11,10 @@
   color: #E16562;
 }
 
+.attrib_button{
+  text-align: center;
+  color: rgb(123,233, 233);
+}
 .rating {
   background-color: #fff;
 }

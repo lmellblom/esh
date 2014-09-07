@@ -1,8 +1,8 @@
 <h1>Hur var det här då?</h1>
 	<span ng-repeat="i in [1, 2, 3, 4]">
 		<label>
-		  <input type="radio"  onClick="swapImage(value)" ng-model="rating.average" value="{{i}}" />
-		  <img id = "rating_{{i}}" src="../images/review/smiley{{i}}.svg">
+		  <input type="radio"  onClick="swapImage('smiley', value)" ng-model="rating.average" value="{{i}}" />
+		  <img id = "rating_{{i}}" ng-src="../images/review/smiley{{i}}.svg">
 		</label>
 	</span>
 <a href = "attributes">OK</a>

@@ -7,11 +7,21 @@
     <script type="text/javascript" src= "../script/angular-route.js"> </script>
     <script src= "../controller/reviewController.js"></script>
     <script> 
-      function swapImage(id){
-        for (var j = 1; j <= 4; j++){
-          document.getElementById("rating_"+j).src = "../images/review/smiley" + j + ".svg";
+      function swapImage(type, id){
+        if(type == 'smiley'){
+          for (var j = 1; j <= 4; j++){
+            document.getElementById("rating_"+j).src = "../images/review/smiley" + j + ".svg";
+          }
+          document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + id + ".svg";
         }
-        document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + id + ".svg";
+        else { //type == attrib
+          if (document.getElementById("attrib_"+id).src.indexOf('selected') == -1){
+            document.getElementById("attrib_"+id).src = "../images/attributes/attrib_selected" + id + ".svg";
+          }
+          else{
+            document.getElementById("attrib_"+id).src = "../images/attributes/attrib" + id + ".svg";
+          }
+        }
       }
 </script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
