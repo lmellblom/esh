@@ -162,16 +162,16 @@ onLoadRestaurants();
   this.setEmotion = function setEmotion(index) { //TODO: set all images
 
   	if($scope.restaurants[index].avgRating == null) {
-			return "images/list/smiley_glad_listvy.svg"; //TODO: change to unknown
+			return "../images/list/smiley_glad_listvy.svg"; //TODO: change to unknown
   	} else if($scope.restaurants[index].avgRating <2) {
-  		return "images/list/smiley_glad_listvy.svg";
+  		return "../images/list/smiley_glad_listvy.svg";
   	} else {
-  		return "images/list/smiley_asglad_listvy.svg";
+  		return "../images/list/smiley_asglad_listvy.svg";
   	}  
   };
 
   this.setControllColor = function setControllColor(index) { //TODO: set all images
-    var imgList = ["images/list/kontroll_fragetecken_listvy.svg", "images/list/kontroll_gron_listvy.svg","images/list/kontroll_rod_listvy.svg" ];
+    var imgList = ["../images/list/kontroll_fragetecken_listvy.svg", "../images/list/kontroll_gron_listvy.svg","../images/list/kontroll_rod_listvy.svg" ];
     return imgList[$scope.restaurants[index].BESLUT]; 
   };
 
