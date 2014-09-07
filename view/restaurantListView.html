@@ -31,13 +31,13 @@
 
 		<!-- insert a image instead -->
 		<span class="pull-right center-block"><img width="25px" src="../images/list/about.svg" alt="Om oss" /></span>
-    <span class="pull-left center-block"><a ng-click="restController.back()" class = "btn back" ng-style="{'background-image':'url(\'../images/icons/back.svg\')'}"></a></span>
+    <span class="pull-left center-block"><a width="22px" ng-click="restController.back()" class = "btn back" ng-style="{'background-image':'url(\'../images/icons/back.svg\')'}"></a></span>
 		<h4 class="hideText">{{name}}</h4>
 	</div>
 
-	<div class="container addMargin">
+	<div class="container">
 		<div>
-
+			<div class="addMargin">
 			<!-- align the restuarant in rows with two cells -->
 			<div ng-show="showList">
 				<div ng-repeat="restaurant in restaurants">
@@ -64,6 +64,7 @@
 				        </div>
 				    </span>
 				</div>
+			</div>
 		</div>
 
 		<div ng-show="showDetail" class="details">
