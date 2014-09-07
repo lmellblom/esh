@@ -8,11 +8,10 @@
     <script src= "../controller/reviewController.js"></script>
     <script> 
       function swapImage(id){
-        console.log(id);
         for (var j = 1; j <= 4; j++){
           document.getElementById("rating_"+j).src = "../images/review/smiley" + j + ".svg";
         }
-        document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + 1 + ".svg";
+        document.getElementById("rating_"+id).src = "../images/review/smiley_selected" + id + ".svg";
       }
 </script>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
@@ -24,7 +23,6 @@
 			<form novalidate class="simple-form" ng-submit="send">
 				<div ng-view></div>
 			</form>
-		  <pre> form = {{rating | json}}</pre>
 		</div>
 	</body>
 </html>

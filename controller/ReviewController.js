@@ -34,6 +34,6 @@ angular.module('Rating', ['ngRoute'])
 	    templateUrl: 'attributesModule.html',
 	    controller: 'AttributesController'
 	  });
-	  // configure html5 to get links working on jsfiddle
+
 	  $locationProvider.html5Mode(true);
 });
